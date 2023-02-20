@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+<div
+        class="topleft"
+        id="move"
+></div>
+
+<style>
+  body{
+    height: 100vh;
+      width: 100vw;
+  }
+  .topleft{
+    background-color: black;
+    width: 80px;
+    height: 80px;
+    margin-left: 0;
+    margin-top: 0;
+    position: absolute;
+  }
+  .topright{
+    background-color: black;
+    width: 80px;
+    height: 80px;
+    margin-left: 90%;
+    margin-top: 0;
+  }
+  .bottomright{
+    background-color: black;
+    width: 80px;
+    height: 80px;
+    margin-left: 90%;
+    margin-top: 80%;
+  }
+  .bottomleft{
+    background-color: black;
+    width: 80px;
+    height: 80px;
+    margin-left: 0%;
+    margin-top: 80%;
+  }
+</style>
+
+<script>
+  div = document.getElementById('move')
+  div.addEventListener('click', function(){
+    if(div.className === 'topleft'){
+      div.classList.add('topright')
+    }
+    else if(div.className ==='topleft topright'){
+      div.classList.add('bottomright')
+    }
+    else if(div.className ==='topleft topright bottomright'){
+      div.classList.add('bottomleft')
+    }
+    else if(div.className ==='topleft topright bottomright bottomleft'){
+      div.className =('topleft')
+    }
+  })
+</script>
+
+</body>
+</html>

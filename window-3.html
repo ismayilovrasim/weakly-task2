@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+<div id="box"></div>
+
+<style>
+    #box {
+        position: fixed;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        width: 200px;
+        height: 200px;
+        background-color: #ccc;
+    }
+
+</style>
+
+<script>
+    const box = document.getElementById('box');
+
+    const initialSize = '200px';
+    const finalSize = '400px';
+
+    const duration = 1000;
+
+    function animateBox() {
+        box.style.width = finalSize;
+        box.style.height = finalSize;
+        setTimeout(function() {
+            box.style.width = initialSize;
+            box.style.height = initialSize;
+            setTimeout(animateBox, duration);
+        }, duration);
+    }
+
+    setTimeout(animateBox, 1000);
+
+</script>
+</body>
+</html>

@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+<body>
+<button onclick="startAnimation()">Start Animation</button>
+</body>
+
+<style>
+
+    .moving-div {
+        width: 100px;
+        height: 100px;
+        background-color: blue;
+        position: absolute;
+        top: 0;
+        left: 0;
+        transition: all 0.5s ease-out;
+    }
+
+
+</style>
+
+<script>
+
+    function startAnimation() {
+        let top = 0;
+        let left = 0;
+        let count = 0;
+        const body = document.querySelector('body');
+        const containerWidth = body.clientWidth;
+        const containerHeight = body.clientHeight;
+        const createDivInterval = setInterval(() => {
+            const div = document.createElement('div');
+            div.className = 'moving-div';
+            div.style.top = top + 'px';
+            div.style.left = left + 'px';
+            body.appendChild(div);
+            left += 10;
+            top += 10;
+            if (left >= containerWidth - 50) {
+                clearInterval(createDivInterval);
+            }
+        }, 1000);
+
+        const moveDivInterval = setInterval(() => {
+            const divs = document.querySelectorAll('.moving-div');
+            for (let i = 0; i < divs.length; i++) {
+                divs[i].style.top = parseInt(divs[i].style.top) + 10 + 'px';
+                divs[i].style.left = parseInt(divs[i].style.left) + 10 + 'px';
+            }
+            count++;
+            if (count >= 20) {
+                clearInterval(moveDivInterval);
+            }
+        }, 1000);
+    }
+
+
+</script>
+
+</body>
+</html>

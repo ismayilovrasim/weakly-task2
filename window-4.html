@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+<div id="box"></div>
+<button id="startBtn">Start</button>
+<button id="stopBtn">Stop</button>
+<div id="countdown"></div>
+
+<style>
+
+    #box {
+        width: 200px;
+        height: 200px;
+        background-color: #20484F;
+        margin: 0 auto;
+        margin-top: 200px;
+        transform-origin: center;
+        transition: transform 0.5s ease-in-out;
+    }
+
+    #stopBtn{
+        margin-top: 60px;
+        display: none;
+    }
+    #startBtn{
+        margin-top: 60px;
+    }
+    button {
+        display: block;
+        margin: 20px auto;
+    }
+
+    #countdown {
+        margin-top: 60px;
+        font-size: 24px;
+        text-align: center;
+        display: none;
+    }
+
+</style>
+
+<script !src="">
+
+    const box = document.getElementById('box');
+    const startBtn = document.getElementById('startBtn');
+    const stopBtn = document.getElementById('stopBtn');
+    const countdown = document.getElementById('countdown');
+    let intervalId;
+    let boxRotation = 0;
+
+    function rotateBox() {
+        box.style.transform = `rotate(${boxRotation}deg)`;
+       boxRotation += 90;
+    }
+
+    startBtn.addEventListener('click', function() {
+        rotateBox();
+        intervalId = setInterval(function() {
+            rotateBox();
+        }, 2000);
+
+        startBtn.style.display = 'none';
+        stopBtn.style.display = 'block';
+    });
+
+    stopBtn.addEventListener('click', function() {
+        countdown.style.display = 'block';
+        countdown.innerText = '3';
+        setTimeout(function() {
+            countdown.innerText = '2';
+        }, 1000);
+        setTimeout(function() {
+            countdown.innerText = '1';
+            
+        }, 2000);
+        setTimeout(function(){
+            countdown.innerHTML = '0'
+            countdown.innerHTML = "Stopped"
+            clearInterval(intervalId);
+        },3000)
+
+        stopBtn.style.display = 'none';
+    });
+
+
+    // 4) Bir div (200px x 200px olcude kvadrat)  ve iki button (Start ve stop) yaradin onlari alt alta centerleyin
+    // Start buttona basandan 1 saniye sonra ve her 2 saniyeden bir div 90 derece firlansin
+    // Stop buttona basanda 'Stop' sozunun yaninda 3 2 1 saysin ve firlanma dayansin.
+
+</script>
+</body>
+</html>

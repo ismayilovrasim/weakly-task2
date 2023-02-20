@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+<script>
+
+    function getRandomColor() {
+        const red = Math.floor(Math.random() * 256);
+        const green = Math.floor(Math.random() * 256);
+        const blue = Math.floor(Math.random() * 256);
+        return `rgb(${red}, ${green}, ${blue})`
+    }
+
+    function createSquare() {
+        const square = document.createElement('div');
+        square.style.width = '100px';
+        square.style.height = '100px';
+        square.style.backgroundColor = getRandomColor();
+        document.body.appendChild(square);
+    }
+
+    document.addEventListener('click', createSquare);
+
+</script>
+
+</body>
+</html>
